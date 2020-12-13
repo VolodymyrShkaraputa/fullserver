@@ -4,12 +4,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+
+
 import java.util.List;
 import java.util.Random;
 
 public class ManePage {
 
     private WebDriver driver;
+    private Object SearchPage;
 
     public ManePage (WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -57,18 +60,45 @@ public class ManePage {
 
 
     // metods
+    public void clickOnRulesButton () {
+        rulesButton.click();
+    }
 
     public void clickOnLoginButton () {
         loginButton.click();
 
     }
 
-    public void getRandomIpAddres () {
+    public void clickOnListingButton () {
+        listingButton.click();
+    }
+
+    public  void clickOnBanlistButton () {
+        banlistButton.click();
+    }
+
+    public void clickOnLineVipButton () {
+        lineVipButton.click();
+    }
+
+    public void clickOnFaqButton () {
+        faqButton.click();
+    }
+
+    public void clickOnStatsButton () {
+        statsButton.click();
+    }
+
+    public void clickOnSupportButton () {
+        supportButton.click();
+    }
+
+    public String getRandomIpAddres () {
         List<WebElement> getAllIpAddress = driver.findElements(By.cssSelector(".full_address"));
         Random random = new Random();
         String randomIp =   getAllIpAddress.get(random.nextInt(random.nextInt(getAllIpAddress.size()))).getText();
         searchField.sendKeys(randomIp);
         searchButton.click();
-
+        return randomIp;
     }
 }

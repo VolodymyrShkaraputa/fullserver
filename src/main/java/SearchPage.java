@@ -1,3 +1,5 @@
+import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -43,5 +45,13 @@ public class SearchPage {
 
     @FindBy(css = ".uk-form-controls.uk-width-1-1 > .uk-button.uk-button-large.uk-width-1-2")
     private WebElement searchButton;
-    
+
+    @FindBy(css = ".even .full_address")
+    private WebElement firstIpAddress;
+
+    public String getIpAddress () {
+        String getIp = firstIpAddress.getText();
+        return getIp;
+
+    }
 }

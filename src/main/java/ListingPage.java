@@ -16,6 +16,8 @@ public class ListingPage {
 
     }
 
+
+
     public void getRandomServer () {
         List<WebElement> fff = driver.findElements(By.cssSelector(".even [width='20%']"));
         Random random = new Random();
