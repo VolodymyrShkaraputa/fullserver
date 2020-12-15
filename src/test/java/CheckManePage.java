@@ -23,6 +23,7 @@ public class CheckManePage {
         driver.manage().window().maximize();
         driver.get("https://fullserver.ru/");
 
+
     }
 
     @Test
