@@ -30,7 +30,7 @@ public class CheckManePage {
     public void checkSearchField () {
         ManePage manePage = PageFactory.initElements(driver,ManePage.class);
         SearchPage searchPage = PageFactory.initElements(driver,SearchPage.class);
-        String  randomIpInManePage =  manePage.getRandomIpAddres();
+        String  randomIpInManePage =  manePage.getRandomIpAddress();
         String getIpAddressInSearchPage = searchPage.getIpAddress();
         Assert.assertTrue(randomIpInManePage.contains(getIpAddressInSearchPage));
 

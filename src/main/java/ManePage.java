@@ -93,12 +93,18 @@ public class ManePage {
         supportButton.click();
     }
 
-    public String getRandomIpAddres () {
+    public String getRandomIpAddress () {
         List<WebElement> getAllIpAddress = driver.findElements(By.cssSelector(".full_address"));
         Random random = new Random();
         String randomIp =   getAllIpAddress.get(random.nextInt(random.nextInt(getAllIpAddress.size()))).getText();
         searchField.sendKeys(randomIp);
         searchButton.click();
         return randomIp;
+    }
+    public String getRandomServerNames () {
+        List<WebElement> getAllServerNames = driver.findElements(By.cssSelector(".name"));
+        Random random = new Random();
+        String serverName =  getAllServerNames.get(random.nextInt(getAllServerNames.size())).getText();
+        return serverName;
     }
 }

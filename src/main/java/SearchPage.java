@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class SearchPage {
 
@@ -49,9 +50,57 @@ public class SearchPage {
     @FindBy(css = ".even .full_address")
     private WebElement firstIpAddress;
 
+    @FindBy(css = "[href] span")
+    private WebElement serverNameInSearchTable;
+
+    @FindBy(css = ".even .full_address")
+    private WebElement serverIpInSearchTable;
+
+    @FindBy(id= "empty")
+    private WebElement emptySearchTable;
+
+
     public String getIpAddress () {
         String getIp = firstIpAddress.getText();
         return getIp;
 
+    }
+
+    public String setChooseGameFiled (String gameName) {
+        Select chooseGame = new Select (chooseGameFiled);
+        chooseGame.selectByValue(gameName);
+        return gameName;
+    }
+
+    public String setCountryField (String countryName) {
+        Select chooseCountry = new Select(chooseCountryField);
+        chooseCountry.selectByValue(countryName);
+        return countryName;
+    }
+
+    public String setSearchField (String searchByName) {
+        Select chooseSearchBy = new Select(searchByField);
+        chooseSearchBy.selectByValue(searchByName);
+        return searchByName;
+    }
+
+    public String setTextField (String setText) {
+        searchTextField.sendKeys(setText);
+        return  setText;
+    }
+
+    public void clickOnSearchButton () {
+        searchButton.click();
+    }
+
+    public  String getServerIpInSearchTable () {
+        return   serverIpInSearchTable.getText();
+    }
+
+    public String getServerNameInSearchTable () {
+        return  serverNameInSearchTable.getText();
+    }
+    public String getEmptySearcTable () {
+        return emptySearchTable.getText();
     }
 }
