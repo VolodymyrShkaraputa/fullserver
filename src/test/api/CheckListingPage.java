@@ -7,12 +7,13 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.concurrent.TimeUnit;
 
-public class CheckPayment {
+public class CheckListingPage {
+
     private WebDriver driver;
 
     @Before
     public void open() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Volodymyr\\IdeaProjects\\Studing\\driver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Wladimir\\IdeaProjects\\drivers\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -22,22 +23,14 @@ public class CheckPayment {
     }
 
     @Test
-    public void checkWmrPayment () throws InterruptedException{
+    public void test() throws  InterruptedException {
+        LoginPage loginPage = PageFactory.initElements(driver,LoginPage.class);
+        loginPage.authorization();
         CabinetPage cabinetPage = PageFactory.initElements(driver,CabinetPage.class);
-        cabinetPage.clickOnBalanceButton();
-        CabinetBalancePage cabinetBalancePage = PageFactory.initElements(driver,CabinetBalancePage.class);
-        cabinetBalancePage.checkWmrPayment();
-
+        cabinetPage.clickOnListingButton();
+        ListingPage listingPage = PageFactory.initElements(driver,ListingPage.class);
+        listingPage.getRandomServer();
     }
-
-    @Test
-    public void checkUnipayPayment () throws InterruptedException{
-        CabinetPage cabinetPage = PageFactory.initElements(driver,CabinetPage.class);
-        cabinetPage.clickOnBalanceButton();
-        CabinetBalancePage cabinetBalancePage = PageFactory.initElements(driver,CabinetBalancePage.class);
-        cabinetBalancePage.checkUnipayPayment();
-    }
-
 
     @After
     public void close () {

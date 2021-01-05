@@ -1,6 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
@@ -13,15 +14,14 @@ public class ListingPage {
         PageFactory.initElements(driver,this);
         this.driver = driver;
 
-
     }
 
-
+    @FindBy(css = ".even [width='20%']")
+    private List<WebElement>  getAllServers;
 
     public void getRandomServer () {
-        List<WebElement> fff = driver.findElements(By.cssSelector(".even [width='20%']"));
         Random random = new Random();
-        String  ffr = fff.get(random.nextInt(random.nextInt(fff.size()))).getText();
+        String  randomServer = getAllServers.get(random.nextInt(random.nextInt(getAllServers.size()))).getText();
 
     }
 

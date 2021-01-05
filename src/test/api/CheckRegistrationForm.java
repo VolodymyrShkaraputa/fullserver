@@ -5,15 +5,13 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.concurrent.TimeUnit;
 
-import static java.lang.Thread.sleep;
-
 public class CheckRegistrationForm {
 
     private WebDriver driver;
 
     @Before
     public void open() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Volodymyr\\IdeaProjects\\Studing\\driver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Wladimir\\IdeaProjects\\drivers\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -32,7 +30,6 @@ public class CheckRegistrationForm {
     public void checkRegistrationWithoutLogin () throws InterruptedException{
         RegistrationPage registrationPage = PageFactory.initElements(driver,RegistrationPage.class);
         registrationPage.setParametersForRegistarion("","ggggg","ggggggg@gmail.com","123697","123697");
-        sleep(1000);
         String getPopupMessage = registrationPage.getErrorPopup();
         Assert.assertTrue(getPopupMessage.contains("Заполните поле 'Логин'"));
     }
@@ -41,7 +38,6 @@ public class CheckRegistrationForm {
     public void checkRegistrationWithoutUserNameField () throws InterruptedException{
         RegistrationPage registrationPage = PageFactory.initElements(driver,RegistrationPage.class);
         registrationPage.setParametersForRegistarion("ggggg","","ggggggg@gmail.com","123697","123697");
-        sleep(1000);
         String getPopupMessage = registrationPage.getErrorPopup();
         Assert.assertTrue(getPopupMessage.contains("Заполните поле 'Имя'"));
     }
@@ -50,7 +46,6 @@ public class CheckRegistrationForm {
     public void checkRegistrationWithoutPasswordField () throws InterruptedException{
         RegistrationPage registrationPage = PageFactory.initElements(driver,RegistrationPage.class);
         registrationPage.setParametersForRegistarion("gggg","ggggg","ggggggg@gmail.com","","123697");
-        sleep(1000);
         String getPopupMessage = registrationPage.getErrorPopup();
         Assert.assertTrue(getPopupMessage.contains("Заполните поле 'Пароль'"));
     }
@@ -59,7 +54,6 @@ public class CheckRegistrationForm {
     public void checkRegistrationWithoutRePasswordField () throws InterruptedException{
         RegistrationPage registrationPage = PageFactory.initElements(driver,RegistrationPage.class);
         registrationPage.setParametersForRegistarion("gggg","ggggg","ggggggg@gmail.com","123697","");
-        sleep(1000);
         String getPopupMessage = registrationPage.getErrorPopup();
         Assert.assertTrue(getPopupMessage.contains("Заполните поле 'Повторите пароль'"));
     }
@@ -68,7 +62,6 @@ public class CheckRegistrationForm {
     public void checkRegistrationWithoutEmaildField () throws InterruptedException{
         RegistrationPage registrationPage = PageFactory.initElements(driver,RegistrationPage.class);
         registrationPage.setParametersForRegistarion("gggg","ggggg","","123697","123697");
-        sleep(1000);
         String getPopupMessage = registrationPage.getErrorPopup();
         Assert.assertTrue(getPopupMessage.contains("Заполните поле 'Email'"));
     }
@@ -77,7 +70,6 @@ public class CheckRegistrationForm {
     public void checkRegistrationWithouAllField () throws InterruptedException{
         RegistrationPage registrationPage = PageFactory.initElements(driver,RegistrationPage.class);
         registrationPage.setParametersForRegistarion("","","","","");
-        sleep(1000);
         String getPopupMessage = registrationPage.getErrorPopup();
         Assert.assertTrue(getPopupMessage.contains("Заполните поле 'Логин'"));
     }
