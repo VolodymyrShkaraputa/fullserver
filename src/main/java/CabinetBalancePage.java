@@ -4,6 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.concurrent.TimeUnit;
+
 import static java.lang.Thread.sleep;
 
 public class CabinetBalancePage {
@@ -34,23 +36,23 @@ public class CabinetBalancePage {
 
     //metods
 
-    public void checkWmrPayment ()throws InterruptedException {
+    public void checkWmrPayment () {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         inputBalanceField.sendKeys("100");
         webmoneyWmrButton.click();
         goToPayButton.isDisplayed();
         goToPayButton.click();
-        sleep(2000);
-        String url = driver.getCurrentUrl();
-        Assert.assertTrue(url.contains("merchant.webmoney.ru"));
+
+
+
     }
 
-    public void checkUnipayPayment () throws InterruptedException {
+    public void checkUnipayPayment (){
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         inputBalanceField.sendKeys("100");
         unipayButton.click();
         goToPayButton.isDisplayed();
         goToPayButton.click();
-        sleep(2000);
-        String url = driver.getCurrentUrl();
-        Assert.assertTrue(url.contains("unitpay.ru"));
+
     }
 }

@@ -78,7 +78,7 @@ public class LoginPage {
 
     public void authorization () {
         loginField.sendKeys("ZeddFox");
-        passwordField.sendKeys("42331996");
+        passwordField.sendKeys("123555");
         avtorizationButton.click();
     }
 

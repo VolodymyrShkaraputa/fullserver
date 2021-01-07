@@ -13,6 +13,7 @@ public class ManePage {
 
     private WebDriver driver;
     private Object SearchPage;
+    Random random = new Random();
 
     public ManePage (WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -58,6 +59,8 @@ public class ManePage {
     @FindBy(css = ".full_address")
     private List<WebElement> ip_addressServer;
 
+    @FindBy(css = ".name")
+    private List<WebElement> getAllServerNames;
 
     // metods
     public void clickOnRulesButton () {
@@ -94,16 +97,14 @@ public class ManePage {
     }
 
     public String getRandomIpAddress () {
-        List<WebElement> getAllIpAddress = driver.findElements(By.cssSelector(".full_address"));
-        Random random = new Random();
-        String randomIp =   getAllIpAddress.get(random.nextInt(random.nextInt(getAllIpAddress.size()))).getText();
+//        List<WebElement> getAllIpAddress = driver.findElements(By.cssSelector(".full_address"));
+        String randomIp =   ip_addressServer.get(random.nextInt(random.nextInt(ip_addressServer.size()))).getText();
         searchField.sendKeys(randomIp);
         searchButton.click();
         return randomIp;
     }
     public String getRandomServerNames () {
-        List<WebElement> getAllServerNames = driver.findElements(By.cssSelector(".name"));
-        Random random = new Random();
+
         String serverName =  getAllServerNames.get(random.nextInt(getAllServerNames.size())).getText();
         return serverName;
     }
