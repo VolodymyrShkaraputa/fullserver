@@ -20,6 +20,7 @@ public class CheckRecoveryForm {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get("https://fullserver.ru/account/recovery/");
+
     }
 
     @Test

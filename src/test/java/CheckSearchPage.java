@@ -19,7 +19,6 @@ public class CheckSearchPage {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get("https://fullserver.ru/search/");
-
     }
 
     @Test

@@ -19,6 +19,7 @@ public class CheckPayment {
         driver.get("https://fullserver.ru/account/auth/");
         LoginPage loginPage = PageFactory.initElements(driver,LoginPage.class);
         loginPage.authorization();
+
     }
 
     @Test
