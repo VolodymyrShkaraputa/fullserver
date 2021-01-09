@@ -12,7 +12,7 @@ public class CheckPayment {
 
     @Before
     public void open() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Volodymyr\\IdeaProjects\\Studing\\driver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Wladimir\\IdeaProjects\\drivers\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
